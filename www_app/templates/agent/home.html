@@ -1,0 +1,115 @@
+{% extends 'agent/main.html'%}
+
+
+
+{%block content%}
+
+<style>
+    h1 {
+        font-size: 3rem;
+        font-weight: 800 !important;
+    }
+</style>
+<h2 class="mt-4 mb-5 text-center" style="font-size: 4rem; font-weight: 800;">Welcome to Agent Home Page</h2>
+
+
+
+<section id="proper">
+    <h1 class="mb-3 mt-2 text-center">Properties</h1>
+    <div class="dc">
+        {% for prop in properties %}
+        <div class="cards">
+            <div class="imdiv">
+                <img src="{{prop.property_image.url}}" alt="Card image cap">
+            </div>
+            <h3>{{ prop.property_type }}</h3>
+            <p>Price: {{ prop.property_price }}</p>
+            <p>Location: {{ prop.property_location }}</p>
+            <p>Owner: {{ prop.owner.name }}</p>
+            <p class="text-muted">Created: {{ prop.created }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+</section>
+
+
+
+<section id="owners">
+
+<h1 class="mt-5 text-center">Property Owners</h1>
+<div class="dc">
+
+    {% for owner in owners %}
+    <div class="cards">
+        <div class="imdiv">
+            <img src="{{owner.pic.url}}" alt="Card image cap">
+        </div>
+        <h3>{{ owner.name }}</h3>
+        <p>Email: {{ owner.email }}</p>
+        <p>Phone: {{ owner.phone }}</p>
+        <p>Address: {{ owner.address }}</p>
+    </div>
+    {% endfor %}
+</div>
+</section>
+
+<section id="seekers">
+    <h1 class="mt-5 text-center">Property Seekers</h1>
+<div class="dc">
+    {% for seeker in seekers %}
+    <div class="cards">
+        <div class="imdiv">
+            <img src="{{seeker.pic.url}}" alt="Card image cap">
+        </div>
+        <h3>{{ seeker.name }}</h3>
+        <p>Email: {{ seeker.email }}</p>
+        <p>Phone: {{ seeker.phone }}</p>
+        <p>Address: {{ seeker.address }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+</section>
+
+<section id="queries">
+    <h1 class=" mt-5 mb-3 text-center">Property Queries</h1>
+<div class="dc">
+
+    {% for query in queries %}
+    <div class="cards p-4" style="text-align: left; border: 1px solid lightgray; border-radius: 1rem;">
+        <h2 class="mb-4 text-center" style="font-weight: 700; font-family: 'Oswald';">{{ query.name }}</h2>
+        <p>Email: {{ query.email }}</p>
+        <p>Type of Property: {{ query.type_of_property }}</p>
+        <p>Price Range: {{ query.price_range }}</p>
+        <p>Location: {{ query.location }}</p>
+        <p class="card-text text-muted">Created: {{ query.created }}</p>
+    </div>
+
+    {% endfor %}
+
+</div>
+</section>
+
+
+<section id="inquiries">
+    <h1 class="mt-4 text-center">Inquiries</h1>
+<div class="dc">
+    {% for inq in inquiry %}
+    <div class="cards">
+        <div class="imdiv">
+            <img src="{{inq.property.property_image.url}}" alt="Card image cap">
+        </div>
+        <h3>Inquiry</h3>
+        <p>Property: {{ inq.property.property_type }}</p>
+        <p>Seeker: {{ inq.seeker.name }}</p>
+        <p>Question: {{ inq.question }}</p>
+        <p class="text-muted">Created: {{ inq.created }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+</section>
+
+
+{%endblock%}

@@ -1,0 +1,185 @@
+{% extends 'html/main.html'%}
+
+
+{%load static%}
+{%block content%}
+
+{%include 'common/message.html'%}
+
+
+
+
+
+<section id="hero">
+    <div class="dc mb-5">
+        <div style="width: 50rem;">
+            <h1 style="font-size: 4rem; font-weight: 900;">Find Your Dream Home Today!</h1>
+        </div>
+        <div style="width: 45rem; padding: 1vw 5vw;">
+            <h3>Discover a wide range of properties for sale or rent.</h3>
+            <button class="btna mt-3 mx-2" onclick="window.location.href='#property';">Search</button>
+            <button class="btnb mt-3 mx-2" onclick="window.location.href='{%url 'property_query'%}';">Contact Us</button>
+        </div>
+    </div>
+    <div
+        style="height: 50rem;  background-image: url(../../static/images/hero.jpg); background-position: center; background-size: cover;">
+    </div>
+</section>
+
+
+
+
+<section id="feature">
+    <div class="cc" style="gap: 10vw; flex-wrap: wrap-reverse !important;">
+        <div style="max-width: 700px;">
+            <p style="font-weight: 600;">Simplify</p>
+            <h1 style="font-size: 4rem; font-weight: 900;">List Your Property and Reach More Buyers</h1>
+            <p class="mt-3" style="font-size: larger;">With our real estate website, property owners can easily list
+                their properties and connect with potential buyers. Showcase your property to a wide audience and
+                increase your chances of selling.</p>
+            <div style="display: flex; justify-content: space-between;">
+                <div style="max-width: 300px">
+                    <img class="my-4" id="cube" src="{%static 'images/cube.png'%}" alt="">
+                    <h4>Maximize Exposure</h4>
+                    <p>Get your property in front of thousands of interested buyers.</p>
+                </div>
+                <div style="max-width: 300px;">
+                    <img class="my-4" id="cube" src="{%static 'images/cube.png'%}" alt="">
+                    <h4>Streamline Sales</h4>
+                    <p>Effortlessly manage inquiries, schedule viewings, and negotiate deals all in one place.</p>
+                </div>
+            </div>
+
+            <button class="btnb" onclick="window.location.href='#about';">Learn More</button>
+            <button class="btnb" style="border: none !important;"
+                onclick="window.location.href='{%url 'owner_register'%}';">Sign Up ></button>
+
+
+
+        </div>
+        <div id="featureimg"></div>
+    </div>
+
+</section>
+
+
+
+<section id="extras">
+    <div class="cc" style="gap: 8vw;">
+        <div id="extrasimg"></div>
+        <div style="margin-top: 5vw; width: 700px;">
+            <h1 style="font-size: 3rem; font-weight: 700;">Find Your Dream Home with Ease and Comprehensive Search Features</h1>
+            <p>Our website offers property seekers a user-friendly experience with advanced search options, making it
+                easy to find their perfect home.</p>
+            <div class="cc" style="justify-content: start !important;">
+                <div>
+                    <img class="my-4" id="cube" src="{%static 'images/cube.png'%}" alt="">
+                    <p>Efficient Property Search</p>
+                </div>
+            </div>
+            <div class="cc"style="justify-content: start !important;">
+                <div>
+                    <img class="my-4" id="cube" src="{%static 'images/cube.png'%}" alt="">
+
+                    <p>Comprehensive Listings</p>
+                </div>
+            </div>
+            <div class="cc"style="justify-content: start !important;">
+                <div>
+                    <img class="my-4" id="cube" src="{%static 'images/cube.png'%}" alt="">
+                    <p>Expert Agent Support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="extra2">
+    <div class="dc mb-5">
+        <div style="width: 50rem;">
+            <p style="font-weight: 600;">RealEstate</p>
+            <h1 style="font-size: 3.5rem; font-weight: 800;">Find your dream property with our trusted agents.</h1>
+        </div>
+        <div style="width: 45rem; padding: 1vw 5vw;">
+            <p style="font-size: large;">Our experienced agents are here to guide you through the buying and selling process. With their expertise and reliability, you can trust that you'll find the perfect property or attract the right buyers.</p>
+            <button class="btnb mt-3 mx-2" onclick="window.location.href='#about';">Learn More</button>
+            <button class="btnb mt-3 mx-2" style="border: none;" onclick="window.location.href='{%url 'agents'%}';">Agents</button>
+        </div>
+    </div>
+    <div
+        style="height: 50rem;  background-image: url(../../static/images/agent.jpg); background-position: center; background-size: cover;">
+    </div>
+
+</section>
+
+
+
+
+<section id="property" style="margin-bottom: 70px;">
+    <h4 style="font-weight: 600;" class="text-center">Find Your Dream Property</h4>
+    <h1 class="text-center my-4" style="font-size: 3.5rem; font-weight: 800;">Featured Properties</h1>
+    <p style="font-size: large; " class="text-center">Browse through our latest properties and find your perfect home.</p>
+    <div class="dc">
+        {%for property in properties|slice:":8" %}
+        <div class="crd cards">
+            <div class="imdiv">
+                <img class="" src="/media/{{property.property_image}}" alt="Card image cap">
+            </div>
+            <h3>{{property.property_type}}</h3>
+            <h5 class="text-muted mb-2">{{property.property_location}}</h4>
+                <h4>₹{{property.property_price}}</h4>
+                <button class="btna crd_btn"
+                    onclick="window.location.href='{%url 'inquiry' property.id%}';">Enquiry</button>
+        </div>
+        {%endfor%}
+    </div>
+    <button class="btnb d-block mx-auto mt-4" style="border-radius: 0 !important;" onclick="window.location.href='{%url 'properties'%}';">View All</button>
+</section>
+
+
+<section id="cta">
+<h1 class="text-center mt-5" style="font-size: 3.5rem; font-weight: 800; color: white;">List Your Property Today</h1>
+<p class="text-center" style="font-size: large; color: white;">Join our platform and reach potential buyers in no time.</p>
+<div style="padding: 0 43%;">
+<button class="btna" onclick="window.location.href='{%url 'owner_register'%}';">SignUp</button>
+<button class="btnb" onclick="window.location.href='#about';">Learn More</button>
+</div>
+</section>
+
+
+
+<section id="contact">
+    <div class="dc" style="width: 100%; gap:10vw;">
+        <div>
+            <h5>Reach</h5>
+            <h1 class="mb-4">Feedback</h1>
+            <p>Your Feedback is important for us, feel free to write one.</p>
+            <div style="border: 1px dotted rgb(176, 176, 176); padding: 2vw; margin-bottom: 6vw;">
+                <form method="post" action="{{'/feedback/'}}">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="mb-2">
+                        <textarea style="height: 100px;" class="form-control" id="remark" placeholder="Remark" name="remark" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" \ class="btna w-50 p-2 d-block mx-auto mt-3">Submit</button>
+                </form>
+            </div>
+        </div>
+    <div id="contactimg">
+
+    </div>
+        
+    </div>
+</section>
+
+
+
+
+{%endblock%}

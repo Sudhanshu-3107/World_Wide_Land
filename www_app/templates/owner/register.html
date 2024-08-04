@@ -1,0 +1,37 @@
+{%extends 'owner/main.html'%}
+{%block content%}
+<h1 class="text-center">Property Owner Registration</h1>
+<div class="d-flex justify-content-center mt-3">
+    <div class="frm">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                {{ form.phone }}
+                <label for="id_phone">Phone</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.password }}
+                <label for="id_password1">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.name }}
+                <label for="id_name">Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.email }}
+                <label for="id_email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.pic }}
+                <label for="id_pic">Profile Picture</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.address }}
+                <label for="id_address">Address</label>
+            </div>
+            <p>Already Registered? <a class="ms-2" href="{%url 'owner_login'%}">Login Here</a></p>
+            <button class="btn btn-info d-block mx-auto" type="submit">Register</button>
+        </form>
+    </div>
+</div>
+{%endblock%}

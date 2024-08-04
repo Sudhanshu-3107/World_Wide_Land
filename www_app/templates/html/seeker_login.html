@@ -1,0 +1,30 @@
+{% extends 'html/main.html'%}
+
+
+
+{%block content%}
+
+<div class="dc">
+    <div class="frm">
+        <div class="container">
+            <h2 class="mt-4 mb-3">Seeker Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-floating mb-3">
+                    {{ field }}
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                </div>
+                {% endfor %}
+                <p>Not Registered? <a class="ms-2" href="{% url 'seeker_reg' %}">Register Here</a></p>
+                <button type="submit" class="btn btn-info">Login</button>
+            </form>
+            {% if error %}
+            <div class="alert alert-danger mt-3" role="alert">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}

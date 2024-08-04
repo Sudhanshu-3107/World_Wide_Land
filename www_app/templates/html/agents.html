@@ -1,0 +1,22 @@
+{% extends 'html/main.html'%}
+{%block content%}
+
+<h1 style="font-size: 4rem; font-weight: 900;" class="text-center my-5">Find your dream property with our trusted agents.</h1>
+
+<div class="dc">
+    {%for agent in agents%}
+    <div class="cards">
+        <div class="imdiv">
+        <img src="{{agent.pic.url}}" alt="">
+    </div>
+        <h3 class="mb-3">{{agent.name}}</h3>
+        <h4 class="text-start">Phone: {{agent.phone}}</h4>
+        <h4 class="text-start">Email: {{agent.email}}</h4>
+        <h4 class="text-start">Address: {{agent.address}}</h4>
+        <h5 class="text-start">Joined: {{agent.created}}</h5>
+        
+    </div>
+    {%endfor%}
+</div>
+
+{%endblock%}

@@ -1,0 +1,33 @@
+{% extends 'owner/main.html' %}
+{% block content %}
+<h2 class="mb-4 text-center">Upload Property Details</h2>
+<div class="d-flex justify-content-center mt-3">
+      
+  <div class="frm">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-floating mb-3">
+      {{ form.property_type }}
+      <label for="id_property_type">Property Type</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.property_price }}
+      <label for="id_property_price">Property Price</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.property_location }}
+      <label for="id_property_location">Property Location</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.property_image }}
+      <label for="id_property_image">Property Image</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.property_description }}
+      <label for="id_property_description">Property Description</label>
+    </div>
+    <button type="submit" class="btn btn-info d-block mx-auto w-25">Upload</button>
+  </form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%include 'common/css.html' %}
+    <title>Document</title>
+</head>
+<body>
+    {%include 'common/header.html'%}
+    <div class="dc mt-5">
+    <div class="frm">
+    <div class="container">
+        <h2 class="mt-4 mb-3">Property Query Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group">
+                <label for="id_name">Name:</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="id_phone">Phone:</label>
+                {{ form.phone }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email:</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="id_type_of_property">Type of Property:</label>
+                {{ form.type_of_property }}
+            </div>
+            <div class="form-group">
+                <label for="id_price_range">Price Range:</label>
+                {{ form.price_range }}
+            </div>
+            <div class="form-group mb-3">
+                <label for="id_location">Location:</label>
+                {{ form.location }}
+            </div>
+            <button type="submit" class="btn btn-info w-25 d-block mx-auto">Submit</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    {%load static%}
+<head>
+    {%include 'common/css.html' %}
+    <title>Agent</title>
+    {% block styles%}
+
+    {%endblock%}
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: white; width: 100% !important;">
+    <div class="container-fluid ps-4 pe-5">
+    
+      <h2 class="oswald">World Wide Land</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#proper">Properties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#owners">Owners</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#seekers">Seekers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#queries">Queries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#inquiries">Inquiries</a>
+          </li>
+        </ul>
+        {%if request.session.session_key%}
+        {% if user.name %}
+            <img style="height: 40px; width: 40px; border-radius: 50%; margin: 0 10px;" src="{{user.pic.url}}" alt="">
+            <ul class="navbar-nav me-5">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{user.name}}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{'/logout/'}}">Logout</a>
+                  </div>
+                </li>
+            </ul>
+          {% endif %}
+        {%else%}
+        <ul class="navbar-nav me-5">
+          <li class="nav-item dropdown">
+              <button onclick="window.location.href='#';" id="navbarDropdown" role="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class=" nav-link dropdown-toggle btn btn-success w-100 p-2">Login</button>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item " href="/owner_login/">Property Owner</a>
+                <a class="dropdown-item" href="/seeker_login/">Property Seeker</a>
+                <a class="dropdown-item " href="/agent_login/">Agent</a>
+                <a class="dropdown-item" href="/member_login/">Member</a>
+              </div>
+            </li>
+        </ul>
+        {%endif%}
+      </div>
+    </div>
+  </nav>
+
+    {%block content%}
+
+    {%endblock%}
+    
+
+
+    {% block script%}
+
+    {%endblock%}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

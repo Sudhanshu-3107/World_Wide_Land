@@ -1,0 +1,26 @@
+{% extends 'html/main.html'%}
+
+
+
+{%block content%}
+
+
+<h1 class="text-center my-4" style="font-size: 3.5rem; font-weight: 800;">All Properties</h1>
+<p style="font-size: large; " class="text-center mb-4">Browse through our properties and find your perfect home.</p>
+<div class="dc">
+    {%for property in properties %}
+    <div class="crd cards">
+        <div class="imdiv">
+            <img class="" src="/media/{{property.property_image}}" alt="Card image cap">
+        </div>
+        <h3>{{property.property_type}}</h3>
+        <h5 class="text-muted mb-2">{{property.property_location}}</h4>
+            <h4>₹{{property.property_price}}</h4>
+            <button class="btna crd_btn"
+                onclick="window.location.href='{%url 'inquiry' property.id%}';">Enquiry</button>
+    </div>
+    {%endfor%}
+</div>
+
+
+{%endblock%}
